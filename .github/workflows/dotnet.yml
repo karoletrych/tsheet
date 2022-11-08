@@ -32,3 +32,4 @@ jobs:
       uses: ncipollo/release-action@v1.11.1
       with:
         artifacts: "./Release/tsheet.exe"
+        name: "nightly"
