@@ -33,3 +33,4 @@ jobs:
       with:
         artifacts: "./Release/tsheet.exe"
         name: "nightly"
+        tag_name: ${{ github.ref }}
