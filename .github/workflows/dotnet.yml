@@ -31,4 +31,4 @@ jobs:
     - name: Create Release
       uses: ncipollo/release-action@v1.11.1
       with:
-        artifact: "./Release/tsheet.exe"
+        artifacts: "./Release/tsheet.exe"
