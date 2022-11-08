@@ -30,4 +30,5 @@ jobs:
       run: dotnet publish -c Release --output ./Release
     - name: Create Release
       uses: ncipollo/release-action@v1.11.1
-      artifact: "./Release/tsheet.exe"
+      with:
+        artifact: "./Release/tsheet.exe"
