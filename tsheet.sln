@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tsheet", "tsheet\tsheet.csproj", "{93CE20B9-7410-4319-8A02-269F26B91DB9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tsheet.domain", "tsheet.domain\tsheet.domain.csproj", "{4109A25B-7424-48CC-A517-E351A0EFD0ED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tsheet.uicomponents", "tsheet.uicomponents\tsheet.uicomponents.csproj", "{3DCE1044-5ED0-4575-A709-35F11555E37B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{93CE20B9-7410-4319-8A02-269F26B91DB9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{93CE20B9-7410-4319-8A02-269F26B91DB9}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{93CE20B9-7410-4319-8A02-269F26B91DB9}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{93CE20B9-7410-4319-8A02-269F26B91DB9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4109A25B-7424-48CC-A517-E351A0EFD0ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4109A25B-7424-48CC-A517-E351A0EFD0ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4109A25B-7424-48CC-A517-E351A0EFD0ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4109A25B-7424-48CC-A517-E351A0EFD0ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3DCE1044-5ED0-4575-A709-35F11555E37B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3DCE1044-5ED0-4575-A709-35F11555E37B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3DCE1044-5ED0-4575-A709-35F11555E37B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3DCE1044-5ED0-4575-A709-35F11555E37B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
