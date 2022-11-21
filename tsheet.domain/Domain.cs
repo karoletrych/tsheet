@@ -22,7 +22,8 @@ public static class DomainEx
     public static TaskDuration Sum<T>(this IReadOnlyCollection<T> collection, Func<T, TaskDuration> selector)
     {
         return collection.Select(selector)
-            .Aggregate((a, b) => new TaskDuration(a.ValueInHours + b.ValueInHours));
+            .Aggregate(new TaskDuration(0m),
+                (a, b) => new TaskDuration(a.ValueInHours + b.ValueInHours));
     }
 }
 
@@ -33,32 +34,36 @@ public record Day(DateOnly Date, IReadOnlyCollection<Activity> Activities);
 public class Consts
 {
     public static IReadOnlyCollection<Day> SampleDays = new List<Day>
-    {
-        new Day(
-            new DateOnly(2022, 11, 01),
-            new[]
-            {
-                new Activity(new WorkItem("Przycisk Przelicz A"), new TaskDuration(2m)),
-                new Activity(new WorkItem("Przycisk Przelicz B"), new TaskDuration(2m)),
-                new Activity(new WorkItem("Przycisk Przelicz C"), new TaskDuration(4m))
-            }
-        ),
-        new Day(
-            new DateOnly(2022, 11, 02),
-            new[]
-            {
-                new Activity(new WorkItem("Przycisk Przelicz A"), new TaskDuration(2m)),
-                new Activity(new WorkItem("Przycisk Przelicz B"), new TaskDuration(2m)),
-                new Activity(new WorkItem("Przycisk Przelicz C"), new TaskDuration(4m))
-            }
-        ),
-        new Day(
-            new DateOnly(2022, 11, 03),
-            new[]
-            {
-                new Activity(new WorkItem("Przycisk Przelicz A"), new TaskDuration(2m)),
-                new Activity(new WorkItem("Przycisk Przelicz B"), new TaskDuration(2m))
-            }
-        )
-    };
+        {
+            new Day(
+                new DateOnly(2022, 11, 01),
+                new[]
+                {
+                    new Activity(new WorkItem("Przycisk Przelicz A"), new TaskDuration(2m)),
+                    new Activity(new WorkItem("Przycisk Przelicz B"), new TaskDuration(2m)),
+                    new Activity(new WorkItem("Przycisk Przelicz C"), new TaskDuration(4m))
+                }
+            ),
+            new Day(
+                new DateOnly(2022, 11, 02),
+                new[]
+                {
+                    new Activity(new WorkItem("Przycisk Przelicz A"), new TaskDuration(2m)),
+                    new Activity(new WorkItem("Przycisk Przelicz B"), new TaskDuration(2m)),
+                    new Activity(new WorkItem("Przycisk Przelicz C"), new TaskDuration(4m))
+                }
+            ),
+            new Day(
+                new DateOnly(2022, 11, 03),
+                new[]
+                {
+                    new Activity(new WorkItem("Przycisk Przelicz A"), new TaskDuration(2m)),
+                    new Activity(new WorkItem("Przycisk Przelicz B"), new TaskDuration(2m))
+                }
+            )
+        }.Concat(Enumerable.Range(4, DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month) - 4).Select(
+            x =>
+                new Day(new DateOnly(DateTime.Now.Year, DateTime.Now.Month, x),
+                    Array.Empty<Activity>().ToList())))
+        .ToList();
 }

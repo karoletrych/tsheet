@@ -53,11 +53,11 @@ internal class DaySheetView : View
         dt.Columns.Add("Work item");
         dt.Columns.Add("Time (h)");
         
-        var day = ViewModel.Timesheet.FirstOrDefault(d=> d.Date == selectedDate);
-        if (day == null)
+        var contains = ViewModel.Timesheet.TryGetValue(selectedDate.Value, out var dateActivities);
+        if (!contains)
             return dt;
         
-        var activities = day.Activities.Select(s => new ActivityVm(s.WorkItem.Name, s.TaskDuration.ValueInHours));
+        var activities = dateActivities.Select(s => new ActivityVm(s.WorkItem.Name, s.TaskDuration.ValueInHours));
         foreach (var activity in activities) dt.Rows.Add(activity.WorkItem, activity.TimeInHours);
 
         dt.Rows.Add(DBNull.Value, DBNull.Value);

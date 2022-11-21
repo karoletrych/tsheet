@@ -39,10 +39,12 @@ public class TasksCalendarView : View
 
         var fullDays = ViewModel
             .Timesheet
-            .Where(d => d.Activities.Sum(s => s.TaskDuration) == _dayTotalTaskDuration)
+            .Where(d => d.Value.Sum(s => s.TaskDuration) == _dayTotalTaskDuration)
+            .Select(x=> x.Key)
             .ToList();
-        _calendarView.HighlightedDays = fullDays.ToDictionary(x => x.Date, _ => 1);
+        _calendarView.HighlightedDays = fullDays.ToDictionary(x => x, _ => 1);
         
         _parent.Add(_calendarView);
     }
+
 }
