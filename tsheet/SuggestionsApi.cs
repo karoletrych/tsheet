@@ -1,15 +1,10 @@
-﻿namespace tsheet;
+﻿using tsheet.domain;
 
-public record WorkItem;
+namespace tsheet;
 
-public record WorkItemSuggestion(string Name);
 
-public record WorkItemShare(WorkItem WorkItem, int Percentage);
-
-public record WorkDay(DateOnly Date, IEnumerable<WorkItemShare> WorkItemShares);
-
-public interface SuggestionsApi
+public interface ISuggestionsApi
 {
-    public IEnumerable<WorkItemSuggestion> GetWorkItemSuggestions();
-    public IEnumerable<WorkDay> GetWorkDays();
+    public IEnumerable<WorkItem> GetWorkItemSuggestions();
+    public IEnumerable<Day> GetWorkDays();
 }

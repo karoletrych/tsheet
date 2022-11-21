@@ -26,9 +26,9 @@ public static class DomainEx
     }
 }
 
-public record DaySheetShare(WorkItem WorkItem, TaskDuration TaskDuration);
+public record Activity(WorkItem WorkItem, TaskDuration TaskDuration);
 
-public record Day(DateOnly Date, IReadOnlyCollection<DaySheetShare> Shares);
+public record Day(DateOnly Date, IReadOnlyCollection<Activity> Activities);
 
 public class Consts
 {
@@ -38,26 +38,26 @@ public class Consts
             new DateOnly(2022, 11, 01),
             new[]
             {
-                new DaySheetShare(new WorkItem("Przycisk Przelicz A"), new TaskDuration(2m)),
-                new DaySheetShare(new WorkItem("Przycisk Przelicz B"), new TaskDuration(2m)),
-                new DaySheetShare(new WorkItem("Przycisk Przelicz C"), new TaskDuration(4m))
+                new Activity(new WorkItem("Przycisk Przelicz A"), new TaskDuration(2m)),
+                new Activity(new WorkItem("Przycisk Przelicz B"), new TaskDuration(2m)),
+                new Activity(new WorkItem("Przycisk Przelicz C"), new TaskDuration(4m))
             }
         ),
         new Day(
             new DateOnly(2022, 11, 02),
             new[]
             {
-                new DaySheetShare(new WorkItem("Przycisk Przelicz A"), new TaskDuration(2m)),
-                new DaySheetShare(new WorkItem("Przycisk Przelicz B"), new TaskDuration(2m)),
-                new DaySheetShare(new WorkItem("Przycisk Przelicz C"), new TaskDuration(4m))
+                new Activity(new WorkItem("Przycisk Przelicz A"), new TaskDuration(2m)),
+                new Activity(new WorkItem("Przycisk Przelicz B"), new TaskDuration(2m)),
+                new Activity(new WorkItem("Przycisk Przelicz C"), new TaskDuration(4m))
             }
         ),
         new Day(
             new DateOnly(2022, 11, 03),
             new[]
             {
-                new DaySheetShare(new WorkItem("Przycisk Przelicz A"), new TaskDuration(2m)),
-                new DaySheetShare(new WorkItem("Przycisk Przelicz B"), new TaskDuration(2m))
+                new Activity(new WorkItem("Przycisk Przelicz A"), new TaskDuration(2m)),
+                new Activity(new WorkItem("Przycisk Przelicz B"), new TaskDuration(2m))
             }
         )
     };

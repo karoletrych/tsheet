@@ -8,7 +8,7 @@ using tsheet.ViewModels;
 
 namespace tsheet.views;
 
-public record DaySheetShareVm(string WorkItem, decimal TimeInHours);
+public record ActivityVm(string WorkItem, decimal TimeInHours);
 
 internal class DaySheetView : View
 {
@@ -57,8 +57,8 @@ internal class DaySheetView : View
         if (day == null)
             return dt;
         
-        var shares = day.Shares.Select(s => new DaySheetShareVm(s.WorkItem.Name, s.TaskDuration.ValueInHours));
-        foreach (var share in shares) dt.Rows.Add(share.WorkItem, share.TimeInHours);
+        var activities = day.Activities.Select(s => new ActivityVm(s.WorkItem.Name, s.TaskDuration.ValueInHours));
+        foreach (var activity in activities) dt.Rows.Add(activity.WorkItem, activity.TimeInHours);
 
         dt.Rows.Add(DBNull.Value, DBNull.Value);
         return dt;
