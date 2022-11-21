@@ -27,7 +27,7 @@ jobs:
     - name: Test
       run: dotnet test --no-build --verbosity normal
     - name: Publish
-      run: dotnet publish -r win-x64 -p:PublishSingleFile=true --self-contained false -c Release --output ./Release
+      run: dotnet publish .\tsheet\tsheet.csproj -r win-x64 -p:PublishSingleFile=true --self-contained false -c Release --output ./Release
     - name: Create Release
       uses: ncipollo/release-action@v1.11.1
       with:
