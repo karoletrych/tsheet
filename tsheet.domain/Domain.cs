@@ -1,19 +1,40 @@
 ﻿namespace tsheet.domain;
 
-public interface IQueries
+public interface IConfig
 {
     public TaskDuration DayTotalTaskDuration { get; }
-    public IReadOnlyCollection<Day> GetTimesheet();
 }
 
-public class Queries : IQueries
+public class Config : IConfig
 {
-    public IReadOnlyCollection<Day> GetTimesheet() => Consts.SampleDays;
-
     public TaskDuration DayTotalTaskDuration => new TaskDuration(8m);
 }
 
-public record WorkItem(string Name);
+public record WorkItem(string Title, ITaskId TaskId);
+
+public interface ITaskId
+{
+}
+
+public record AzureDevopsTaskId : ITaskId
+{
+    public AzureDevopsTaskId(int taskId)
+    {
+        TaskId = taskId;
+    }
+
+    private int TaskId { get; }
+}
+
+public record ManualTaskId : ITaskId
+{
+    public ManualTaskId(string taskId)
+    {
+        TaskId = taskId;
+    }
+
+    private string TaskId { get; }
+}
 
 public record TaskDuration(decimal ValueInHours);
 
@@ -31,39 +52,3 @@ public record Activity(WorkItem WorkItem, TaskDuration TaskDuration);
 
 public record Day(DateOnly Date, IReadOnlyCollection<Activity> Activities);
 
-public class Consts
-{
-    public static IReadOnlyCollection<Day> SampleDays = new List<Day>
-        {
-            new Day(
-                new DateOnly(2022, 11, 01),
-                new[]
-                {
-                    new Activity(new WorkItem("Przycisk Przelicz A"), new TaskDuration(2m)),
-                    new Activity(new WorkItem("Przycisk Przelicz B"), new TaskDuration(2m)),
-                    new Activity(new WorkItem("Przycisk Przelicz C"), new TaskDuration(4m))
-                }
-            ),
-            new Day(
-                new DateOnly(2022, 11, 02),
-                new[]
-                {
-                    new Activity(new WorkItem("Przycisk Przelicz A"), new TaskDuration(2m)),
-                    new Activity(new WorkItem("Przycisk Przelicz B"), new TaskDuration(2m)),
-                    new Activity(new WorkItem("Przycisk Przelicz C"), new TaskDuration(4m))
-                }
-            ),
-            new Day(
-                new DateOnly(2022, 11, 03),
-                new[]
-                {
-                    new Activity(new WorkItem("Przycisk Przelicz A"), new TaskDuration(2m)),
-                    new Activity(new WorkItem("Przycisk Przelicz B"), new TaskDuration(2m))
-                }
-            )
-        }.Concat(Enumerable.Range(4, DateTime.DaysInMonth(DateTime.Now.Year, DateTime.Now.Month) - 4).Select(
-            x =>
-                new Day(new DateOnly(DateTime.Now.Year, DateTime.Now.Month, x),
-                    Array.Empty<Activity>().ToList())))
-        .ToList();
-}

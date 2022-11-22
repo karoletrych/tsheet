@@ -45,6 +45,6 @@ public class TasksCalendarView : View
         _calendarView.HighlightedDays = fullDays.ToDictionary(x => x, _ => 1);
         
         _parent.Add(_calendarView);
+        _calendarView.SetFocus();
     }
-
 }

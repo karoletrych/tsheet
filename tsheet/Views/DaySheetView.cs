@@ -57,7 +57,7 @@ internal class DaySheetView : View
         if (!contains)
             return dt;
         
-        var activities = dateActivities.Select(s => new ActivityVm(s.WorkItem.Name, s.TaskDuration.ValueInHours));
+        var activities = dateActivities.Select(s => new ActivityVm(s.WorkItem.Title, s.TaskDuration.ValueInHours));
         foreach (var activity in activities) dt.Rows.Add(activity.WorkItem, activity.TimeInHours);
 
         dt.Rows.Add(DBNull.Value, DBNull.Value);
