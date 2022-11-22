@@ -1,4 +1,4 @@
-using Newtonsoft.Json;
+using System.Text.Json;
 using tsheet.ViewModels;
 
 namespace tsheet;
@@ -20,7 +20,7 @@ public class JsonStorage
         }
         
         var lines = File.ReadAllText(_stateFilePath);
-        var state = JsonConvert.DeserializeObject<TimesheetViewModel>(lines);
+        var state = JsonSerializer.Deserialize<TimesheetViewModel>(lines);
         if (state is null)
             throw new InvalidOperationException("file is empty");
         return state;
@@ -28,7 +28,10 @@ public class JsonStorage
 
     public void SaveState(TimesheetViewModel state)
     {
-        var lines = JsonConvert.SerializeObject(state, Formatting.Indented);
+        var lines = JsonSerializer.Serialize(state, new JsonSerializerOptions
+        {
+            WriteIndented = true
+        });
         File.WriteAllText(_stateFilePath, lines);
     }
 }

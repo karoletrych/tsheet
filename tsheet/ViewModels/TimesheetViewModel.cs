@@ -3,11 +3,10 @@ using ReactiveUI;
 using ReactiveUI.Fody.Helpers;
 using tsheet.domain;
 using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace tsheet.ViewModels;
 
-// todo dotnet 7
-// [JsonPolymorphic(UnknownDerivedTypeHandling = JsonUnknownDerivedTypeHandling.FallBackToBaseType)]
 public class TimesheetViewModel : ReactiveObject, IDisposable
 {
     [DataMember]

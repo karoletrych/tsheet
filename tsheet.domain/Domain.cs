@@ -1,4 +1,6 @@
-﻿namespace tsheet.domain;
+﻿using System.Text.Json.Serialization;
+
+namespace tsheet.domain;
 
 public interface IConfig
 {
@@ -12,6 +14,8 @@ public class Config : IConfig
 
 public record WorkItem(string Title, ITaskId TaskId);
 
+[JsonPolymorphic(UnknownDerivedTypeHandling = JsonUnknownDerivedTypeHandling.FallBackToBaseType)]
+[JsonDerivedType(typeof(ManualTaskId))]
 public interface ITaskId
 {
 }
