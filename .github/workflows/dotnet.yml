@@ -29,9 +29,9 @@ jobs:
     - name: Publish
       run: dotnet publish ./tsheet/tsheet.csproj -r win-x64 -p:PublishSingleFile=true --self-contained true -c Release --output ./Release
     - name: Tag release
-      uses: Klemensas/action-autotag@stable
+    - uses: phish108/autotag-action@1.1.52
       with:
-        GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+        github-token: ${{ secrets.GITHUB_TOKEN}}
     - name: Release
       uses: softprops/action-gh-release@v1
       with:
