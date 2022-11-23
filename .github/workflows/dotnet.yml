@@ -29,7 +29,7 @@ jobs:
     - name: Publish
       run: dotnet publish ./tsheet/tsheet.csproj -r win-x64 -p:PublishSingleFile=true --self-contained true -c Release --output ./Release
     - name: Tag release
-    - uses: phish108/autotag-action@1.1.52
+      uses: phish108/autotag-action@1.1.52
       with:
         github-token: ${{ secrets.GITHUB_TOKEN}}
     - name: Release
