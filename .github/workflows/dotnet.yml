@@ -32,5 +32,5 @@ jobs:
       uses: ncipollo/release-action@v1.11.1
       with:
         artifacts: "./Release/tsheet.exe"
-        tag: ${{ env.GITHUB_SHA }}
+        tag: ${{ github.sha }}
         name: "nightly"
